@@ -1,0 +1,30 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev:api-gateway\" \"npm run dev:user-service\" \"npm run dev:product-service\"",
+    "dev:api-gateway": "nodemon server.js --watch .",
+    "dev:user-service": "cd ../services/user-service && node check-and-install.js && nodemon node server.js",
+    "dev:product-service": "cd ../services/product-service && node check-and-install.js && nodemon node server.js",
+
+    "start": "concurrently \"npm run start:api-gateway\" \"npm run start:user-service\" \"npm run start:product-service\"",
+    "start:api-gateway" : " node server.js",
+    "start:user-service" : " cd ../services/user-service && node check-and-install.js && node server.js" ,
+    "start:product-service":"cd ../services/product-service && node check-and-install.js && node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "http-proxy-middleware": "^3.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7"
+  }
+}
